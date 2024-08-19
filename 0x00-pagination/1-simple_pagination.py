@@ -5,7 +5,7 @@ Class to print values from given csv file
 import csv
 import math
 from typing import List
-from typing import Tuple
+from typing import Tuple, Dict, Any
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
@@ -52,3 +52,24 @@ class Server:
                  return []
             
             return self.dataset()[starting:ending]
+    
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
+        """
+        Method 2 fetch more data per request
+        """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
+
+        data = self.get_page(page, page_size)
+        totalpages = len(data) / page_size
+        totalpages = math.ceil(totalpages)
+        hyper_data = {
+            "page_size": len(data),
+            "page": page,
+            "data": data,
+            "next_page": page + 1 if page < totalpages else None,
+            "prev_page": page + 1 if page > 1 else None,
+            "total_pages": totalpages
+        }
+        return hyper_data
+    
