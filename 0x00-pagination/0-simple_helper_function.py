@@ -2,7 +2,7 @@
 """
 Write a function named index_range
 takes two integer arguments page and page_size.
-The function should return a tuple of size two 
+The function should return a tuple of size two
 """
 from typing import Tuple
 
