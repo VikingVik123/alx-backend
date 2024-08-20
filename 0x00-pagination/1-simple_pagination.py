@@ -53,5 +53,5 @@ class Server:
 
         if starting >= dataset_len:
             return []
-            
+
         return self.dataset()[starting:ending]
