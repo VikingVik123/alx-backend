@@ -17,6 +17,7 @@ def index_range(page: int, page_size: int) -> Tuple[int, int]:
     res = (starting, ending)
     return res
 
+
 class Server:
     """
     Server class to paginate a database of popular baby names.
@@ -39,20 +40,20 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-            """
-            method 2 fetch page data
-            """
-            assert isinstance(page, int) and page > 0
-            assert isinstance(page_size, int) and page_size > 0
+        """
+        method 2 fetch page data
+        """
+        assert isinstance(page, int) and page > 0
+        assert isinstance(page_size, int) and page_size > 0
 
-            dataset_len = len(self.dataset())
-            starting, ending = index_range(page, page_size)
+        dataset_len = len(self.dataset())
+        starting, ending = index_range(page, page_size)
 
-            if starting >= dataset_len:
-                 return []
-            
-            return self.dataset()[starting:ending]
-    
+        if starting >= dataset_len:
+            return []
+
+        return self.dataset()[starting:ending]
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> Dict[str, Any]:
         """
         Method 2 fetch more data per request
@@ -72,13 +73,3 @@ class Server:
             "total_pages": totalpages
         }
         return hyper_data
-    
-if __name__ == "__main__":
-    server = Server()
-    print(server.get_hyper(1, 2))
-    print("---")
-    print(server.get_hyper(2, 2))
-    print("---")
-    print(server.get_hyper(100, 3))
-    print("---")
-    print(server.get_hyper(3000, 100))
