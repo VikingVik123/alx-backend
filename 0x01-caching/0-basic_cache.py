@@ -1,43 +1,21 @@
-""" BaseCaching module
-"""
-
-class BaseCaching():
-    """ BaseCaching defines:
-      - constants of your caching system
-      - where your data are stored (in a dictionary)
-    """
-    MAX_ITEMS = 4
-
-    def __init__(self):
-        """ Initiliaze
-        """
-        self.cache_data = {}
-
-    def print_cache(self):
-        """ Print the cache
-        """
-        print("Current cache:")
-        for key in sorted(self.cache_data.keys()):
-            print("{}: {}".format(key, self.cache_data.get(key)))
-
-    def put(self, key, item):
-        """ Add an item in the cache
-        """
-        raise NotImplementedError("put must be implemented in your cache class")
-
-    def get(self, key):
-        """ Get an item by key
-        """
-        raise NotImplementedError("get must be implemented in your cache class")
-
+#!/usr/bin/env python3
 """
 class 2 use paren
 """
 class BasicCache(BaseCaching):
+    """
+    class instantiation
+    """
     def __init__(self):
+        """
+        initial instantiation
+        """
         super().__init__()
 
     def put(self, key, item):
+        """
+        put item into cache
+        """
         if key is None:
             raise ValueError("key is null")
         if item is None:
@@ -48,11 +26,15 @@ class BasicCache(BaseCaching):
             self.cache_data[key] = item
 
     def get(self, key):
+        """
+        Retrieve items from cache
+        """
         if key is None:
             return None
         else:
             return self.cache_data.get(key)
 
+"""
 my_cache = BasicCache()
 my_cache.print_cache()
 my_cache.put("A", "Hello")
@@ -69,3 +51,4 @@ my_cache.put("E", "Battery")
 my_cache.put("A", "Street")
 my_cache.print_cache()
 print(my_cache.get("A"))
+"""
