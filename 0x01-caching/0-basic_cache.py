@@ -2,6 +2,8 @@
 """
 class 2 use paren
 """
+
+
 class BasicCache(BaseCaching):
     """
     class instantiation
