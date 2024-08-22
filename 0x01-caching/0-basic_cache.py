@@ -2,6 +2,7 @@
 """
 class 2 use paren
 """
+from base_caching import BaseCaching
 
 
 class BasicCache(BaseCaching):
