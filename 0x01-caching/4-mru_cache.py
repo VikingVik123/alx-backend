@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 """
-Create a class LRUCache that inherits from BaseCaching
+Create a class MRUCache that inherits from BaseCaching and is a caching system
 """
 from base_caching import BaseCaching
 from collections import OrderedDict
 
 
-class LRUCache(BaseCaching):
+class MRUCache(BaseCaching):
     """
-    LRU Cache class
+    MRU Cache class
     """
     def __init__(self):
         """
@@ -19,8 +19,8 @@ class LRUCache(BaseCaching):
 
     def put(self, key, item):
         """
-        Add an item to the cache using LRU.
-        discard the least recently used item (LRU).
+        Add an item to the cache using MRU.
+        discard the most recently used item (MRU).
         """
         if key is None or item is None:
             return
@@ -31,8 +31,8 @@ class LRUCache(BaseCaching):
         self.cache_data[key] = item
 
         if len(self.cache_data) > BaseCaching.MAX_ITEMS:
-            least_recent_key, _ = self.cache_data.popitem(last=False)
-            print("DISCARD:", least_recent_key)
+            most_recent_key, _ = self.cache_data.popitem(last=True)
+            print("DISCARD:", most_recent_key)
 
     def get(self, key):
         """
@@ -43,4 +43,5 @@ class LRUCache(BaseCaching):
 
         item = self.cache_data.pop(key)
         self.cache_data[key] = item
+
         return item
