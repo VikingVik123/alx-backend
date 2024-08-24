@@ -33,6 +33,6 @@ class BasicCache(BaseCaching):
         Retrieve items from cache
         """
         if key is None:
-            return None
+            return
         else:
             return self.cache_data.get(key)
