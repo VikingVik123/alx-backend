@@ -7,8 +7,7 @@ from flask_babel import Babel
 
 
 app = Flask(__name__)
-app.config['BABEL_DEFAULT_LOCALE'] = 'en'
-babel = Babel(app)
+app.url_map.strict_slashes = False
 
 
 @app.route("/")
