@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+
 """
 setup a basic flask app
 """
@@ -29,7 +29,7 @@ def hello_world():
     return render_template("1-index.html")
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """
     Determine the best match for supported languages.
     """
